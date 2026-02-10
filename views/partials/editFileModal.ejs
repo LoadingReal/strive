@@ -1,0 +1,30 @@
+<div class="edit-file-modal modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h1>Edit File</h1>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        class="modal-close edit-file-close-btn"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M6 18 18 6M6 6l12 12"
+        />
+      </svg>
+    </div>
+    <form
+      class="add-file-form"
+      action="/file/<%= locals.folderId %>/edit"
+      method="post"
+      enctype="multipart/form-data"
+    >
+      <input type="text" name="editFileName" value="<%= file.fileName %>" required />
+      <button type="submit">Edit</button>
+    </form>
+  </div>
+</div>

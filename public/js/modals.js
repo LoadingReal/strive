@@ -8,6 +8,11 @@ const addFolderModal = document.querySelector(".add-folder-modal");
 const addFolderInput = addFolderModal.querySelector("input");
 const addFolderCloseBtn = document.querySelector(".add-folder-close-btn");
 const addFolderForm = document.querySelector(".add-folder-form");
+
+const editFileBtns = document.querySelectorAll(".edit-file-btn");
+const editFileModals = document.querySelectorAll(".edit-file-modal");
+const editFileCloseBtn = document.querySelector(".edit-file-close-btn");
+
 const backdrop = document.querySelector(".backdrop");
 
 addFileBtn.addEventListener("click", () => {
@@ -31,6 +36,17 @@ window.addEventListener("load", () => {
   backdrop.classList.remove("show");
 });
 
+editFileBtns.forEach((editFileBtn, index) => {
+  editFileBtn.addEventListener("click", () => {
+    editFileModals[index].classList.add("show");
+    backdrop.classList.add("show");
+    bodyBackdrop.classList.remove("show");
+    fileInfoContainer.forEach((fileInfo) => {
+      fileInfo.classList.remove("show");
+    });
+  });
+});
+
 document.addEventListener("click", (e) => {
   if (
     e.target === addFileModal ||
@@ -49,4 +65,15 @@ document.addEventListener("click", (e) => {
     addFolderModal.classList.remove("show");
     backdrop.classList.remove("show");
   }
+
+  editFileModals.forEach((editFileModal) => {
+    if (
+      e.target === editFileModal ||
+      e.target === editFileCloseBtn ||
+      e.target === backdrop
+    ) {
+      editFileModal.classList.remove("show");
+      backdrop.classList.remove("show");
+    }
+  });
 });

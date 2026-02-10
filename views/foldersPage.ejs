@@ -46,6 +46,7 @@
             <% files.forEach((file, index) => { %>
             <%- include("partials/fileCard",
               {file, index}) %>
+            <%- include("partials/editFileModal", {file}) %>
             <%- include("partials/fileInfo", {file}) %>
             <% }) %>
           </div>
